@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Perfil — Gestor Académico</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div class="app-layout">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">🎓</div>
+      <div class="sidebar-logo-text">GestorAcadémico</div>
+    </div>
+    <nav class="sidebar-nav">
+      <span class="nav-section-label">Principal</span>
+      <a href="dashboard.html" class="nav-item" data-page="dashboard"><span class="nav-icon">🏠</span> Dashboard</a>
+      <a href="cursos.html" class="nav-item" data-page="cursos"><span class="nav-icon">📚</span> Cursos</a>
+      <a href="tareas.html" class="nav-item" data-page="tareas"><span class="nav-icon">✅</span> Tareas</a>
+      <span class="nav-section-label">Cuenta</span>
+      <a href="perfil.html" class="nav-item" data-page="perfil"><span class="nav-icon">👤</span> Perfil</a>
+      <a href="configuracion.html" class="nav-item" data-page="configuracion"><span class="nav-icon">⚙️</span> Configuración</a>
+      <button class="nav-item logout" onclick="cerrarSesion()"><span class="nav-icon">🚪</span> Cerrar sesión</button>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar" id="sidebarAvatar">?</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name" id="sidebarName">—</div>
+          <div class="sidebar-user-role" id="sidebarRole">—</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">👤 Perfil</h1>
+        <p class="page-subtitle">Consulta y actualiza tus datos personales</p>
+      </div>
+    </div>
+
+    <div class="page-body">
+      <div class="profile-avatar-section">
+        <div class="profile-avatar-big" id="pAvatarBig">?</div>
+        <div>
+          <h2 style="font-size:20px;font-weight:700" id="pNombreCompleto">—</h2>
+          <p style="font-size:14px;color:var(--text-muted)" id="pCorreoDisplay">—</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:20px">Información personal</h3>
+        <form id="formPerfil">
+          <div class="profile-grid">
+            <div class="field">
+              <label>Nombres *</label>
+              <input type="text" id="pNombres" required/>
+            </div>
+            <div class="field">
+              <label>Apellidos *</label>
+              <input type="text" id="pApellidos" required/>
+            </div>
+            <div class="field">
+              <label>Correo electrónico *</label>
+              <input type="email" id="pCorreo" required/>
+            </div>
+            <div class="field">
+              <label>DNI *</label>
+              <input type="text" id="pDNI" maxlength="8" required/>
+            </div>
+            <div class="field">
+              <label>Carrera *</label>
+              <input type="text" id="pCarrera" required/>
+            </div>
+            <div class="field">
+              <label>Ciclo académico *</label>
+              <select id="pCiclo" required>
+                <option>I</option><option>II</option><option>III</option>
+                <option>IV</option><option>V</option><option>VI</option>
+                <option>VII</option><option>VIII</option><option>IX</option><option>X</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label>Ciudad *</label>
+              <input type="text" id="pCiudad" required/>
+            </div>
+          </div>
+          <div style="display:flex;gap:12px;margin-top:20px;flex-wrap:wrap">
+            <button type="submit" class="btn btn-primary" style="width:auto;margin-top:0">Guardar cambios</button>
+            <button type="button" class="btn btn-danger" id="btnEliminarCuenta">🗑️ Eliminar cuenta</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="app.js"></script>
+<script>initPerfil();</script>
+</body>
+</html>

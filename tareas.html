@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tareas — Gestor Académico</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div class="app-layout">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">🎓</div>
+      <div class="sidebar-logo-text">GestorAcadémico</div>
+    </div>
+    <nav class="sidebar-nav">
+      <span class="nav-section-label">Principal</span>
+      <a href="dashboard.html" class="nav-item" data-page="dashboard"><span class="nav-icon">🏠</span> Dashboard</a>
+      <a href="cursos.html" class="nav-item" data-page="cursos"><span class="nav-icon">📚</span> Cursos</a>
+      <a href="tareas.html" class="nav-item" data-page="tareas"><span class="nav-icon">✅</span> Tareas</a>
+      <span class="nav-section-label">Cuenta</span>
+      <a href="perfil.html" class="nav-item" data-page="perfil"><span class="nav-icon">👤</span> Perfil</a>
+      <a href="configuracion.html" class="nav-item" data-page="configuracion"><span class="nav-icon">⚙️</span> Configuración</a>
+      <button class="nav-item logout" onclick="cerrarSesion()"><span class="nav-icon">🚪</span> Cerrar sesión</button>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar" id="sidebarAvatar">?</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name" id="sidebarName">—</div>
+          <div class="sidebar-user-role" id="sidebarRole">—</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">✅ Tareas</h1>
+        <p class="page-subtitle">Organiza y realiza seguimiento de tus tareas académicas</p>
+      </div>
+      <button class="btn btn-primary" id="btnNuevaTarea" style="margin-top:8px;width:auto">+ Nueva tarea</button>
+    </div>
+
+    <div class="page-body">
+      <div class="filters-row">
+        <div class="field">
+          <select id="filtroEstado">
+            <option value="">Todos los estados</option>
+            <option value="Pendiente">Pendiente</option>
+            <option value="Completada">Completada</option>
+          </select>
+        </div>
+        <div class="field">
+          <select id="filtroCurso">
+            <option value="">Todos los cursos</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Título</th><th>Curso</th><th>Entrega</th><th>Prioridad</th><th>Estado</th><th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tareasList"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="modal-overlay" id="modalTarea">
+  <div class="modal">
+    <h2 class="modal-title" id="modalTareaTitle">Nueva Tarea</h2>
+    <form id="formTarea">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="field">
+          <label>Título *</label>
+          <input type="text" id="tTitulo" placeholder="Ej: Informe de laboratorio" required/>
+        </div>
+        <div class="field">
+          <label>Curso asociado *</label>
+          <select id="tCurso" required>
+            <option value="">Seleccionar curso</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Fecha de entrega *</label>
+          <input type="date" id="tFecha" required/>
+        </div>
+        <div class="field">
+          <label>Prioridad</label>
+          <select id="tPrioridad">
+            <option value="Alta">Alta</option>
+            <option value="Media" selected>Media</option>
+            <option value="Baja">Baja</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Estado</label>
+          <select id="tEstado">
+            <option value="Pendiente">Pendiente</option>
+            <option value="Completada">Completada</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Descripción</label>
+          <textarea id="tDescripcion" rows="3" placeholder="Descripción opcional..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btnCancelarTarea">Cancelar</button>
+        <button type="submit" class="btn btn-primary" style="width:auto;margin-top:0">Guardar</button>
+      </div>
+    </form>
+    <button class="btn btn-secondary btn-icon" id="btnCerrarModalTarea" style="position:absolute;top:16px;right:16px">✕</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script>initTareas();</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cursos — Gestor Académico</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div class="app-layout">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">🎓</div>
+      <div class="sidebar-logo-text">GestorAcadémico</div>
+    </div>
+    <nav class="sidebar-nav">
+      <span class="nav-section-label">Principal</span>
+      <a href="dashboard.html" class="nav-item" data-page="dashboard"><span class="nav-icon">🏠</span> Dashboard</a>
+      <a href="cursos.html" class="nav-item" data-page="cursos"><span class="nav-icon">📚</span> Cursos</a>
+      <a href="tareas.html" class="nav-item" data-page="tareas"><span class="nav-icon">✅</span> Tareas</a>
+      <span class="nav-section-label">Cuenta</span>
+      <a href="perfil.html" class="nav-item" data-page="perfil"><span class="nav-icon">👤</span> Perfil</a>
+      <a href="configuracion.html" class="nav-item" data-page="configuracion"><span class="nav-icon">⚙️</span> Configuración</a>
+      <button class="nav-item logout" onclick="cerrarSesion()"><span class="nav-icon">🚪</span> Cerrar sesión</button>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar" id="sidebarAvatar">?</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name" id="sidebarName">—</div>
+          <div class="sidebar-user-role" id="sidebarRole">—</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">📚 Cursos</h1>
+        <p class="page-subtitle">Gestiona tus cursos del ciclo actual</p>
+      </div>
+      <button class="btn btn-primary" id="btnNuevoCurso" style="margin-top:8px;width:auto">+ Nuevo curso</button>
+    </div>
+
+    <div class="page-body">
+      <div class="filters-row">
+        <div class="field" style="max-width:320px">
+          <input type="text" id="buscarCurso" placeholder="🔍 Buscar curso..."/>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre</th><th>Docente</th><th>Horario</th><th>Aula / Modalidad</th><th>Créditos</th><th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="cursosList"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="modal-overlay" id="modalCurso">
+  <div class="modal">
+    <h2 class="modal-title" id="modalTitle">Nuevo Curso</h2>
+    <form id="formCurso">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="field">
+          <label>Nombre del curso *</label>
+          <input type="text" id="cNombre" placeholder="Ej: Cálculo Diferencial" required/>
+        </div>
+        <div class="field">
+          <label>Docente *</label>
+          <input type="text" id="cDocente" placeholder="Ej: Dr. Ramírez" required/>
+        </div>
+        <div class="field">
+          <label>Horario *</label>
+          <input type="text" id="cHorario" placeholder="Ej: Lun-Mié 8:00-10:00" required/>
+        </div>
+        <div class="field">
+          <label>Aula / Modalidad *</label>
+          <input type="text" id="cAula" placeholder="Ej: Aula 301 / Virtual" required/>
+        </div>
+        <div class="field">
+          <label>Créditos *</label>
+          <input type="number" id="cCreditos" min="1" max="10" placeholder="Ej: 4" required/>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btnCancelar">Cancelar</button>
+        <button type="submit" class="btn btn-primary" style="width:auto;margin-top:0">Guardar</button>
+      </div>
+    </form>
+    <button class="btn btn-secondary btn-icon" id="btnCerrarModal" style="position:absolute;top:16px;right:16px">✕</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script>initCursos();</script>
+</body>
+</html>

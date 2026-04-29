@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard — Gestor Académico</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div class="app-layout">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">🎓</div>
+      <div class="sidebar-logo-text">GestorAcadémico</div>
+    </div>
+    <nav class="sidebar-nav">
+      <span class="nav-section-label">Principal</span>
+      <a href="dashboard.html" class="nav-item" data-page="dashboard"><span class="nav-icon">🏠</span> Dashboard</a>
+      <a href="cursos.html" class="nav-item" data-page="cursos"><span class="nav-icon">📚</span> Cursos</a>
+      <a href="tareas.html" class="nav-item" data-page="tareas"><span class="nav-icon">✅</span> Tareas</a>
+      <span class="nav-section-label">Cuenta</span>
+      <a href="perfil.html" class="nav-item" data-page="perfil"><span class="nav-icon">👤</span> Perfil</a>
+      <a href="configuracion.html" class="nav-item" data-page="configuracion"><span class="nav-icon">⚙️</span> Configuración</a>
+      <button class="nav-item logout" onclick="cerrarSesion()"><span class="nav-icon">🚪</span> Cerrar sesión</button>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar" id="sidebarAvatar">?</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name" id="sidebarName">—</div>
+          <div class="sidebar-user-role" id="sidebarRole">—</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Dashboard</h1>
+        <p class="page-subtitle">Hola, <strong id="greetName"></strong> 👋 — Aquí tu resumen académico</p>
+      </div>
+      <a href="tareas.html" class="btn btn-secondary" style="margin-top:8px">+ Nueva tarea</a>
+    </div>
+
+    <div class="page-body">
+      <div class="next-task-card" id="nextTask">
+        <div class="next-task-label">⏰ Próxima tarea por vencer</div>
+        <div class="next-task-title" id="nextTaskTitle"></div>
+        <div class="next-task-meta" id="nextTaskMeta"></div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card accent">
+          <div class="stat-label">Cursos</div>
+          <div class="stat-value" id="totalCursos">0</div>
+          <div class="stat-sub">registrados</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total Tareas</div>
+          <div class="stat-value" id="totalTareas">0</div>
+          <div class="stat-sub">en total</div>
+        </div>
+        <div class="stat-card warning">
+          <div class="stat-label">Pendientes</div>
+          <div class="stat-value" id="tareasPendientes">0</div>
+          <div class="stat-sub">por completar</div>
+        </div>
+        <div class="stat-card success">
+          <div class="stat-label">Completadas</div>
+          <div class="stat-value" id="tareasCompletadas">0</div>
+          <div class="stat-sub">finalizadas</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+          <h2 style="font-size:16px;font-weight:700">Tareas recientes</h2>
+          <a href="tareas.html" class="btn btn-secondary btn-sm">Ver todas →</a>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Título</th><th>Curso</th><th>Entrega</th><th>Prioridad</th><th>Estado</th>
+              </tr>
+            </thead>
+            <tbody id="tareasRecientes"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="app.js"></script>
+<script>initDashboard();</script>
+</body>
+</html>

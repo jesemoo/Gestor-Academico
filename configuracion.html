@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Configuración — Gestor Académico</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div class="app-layout">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">🎓</div>
+      <div class="sidebar-logo-text">GestorAcadémico</div>
+    </div>
+    <nav class="sidebar-nav">
+      <span class="nav-section-label">Principal</span>
+      <a href="dashboard.html" class="nav-item" data-page="dashboard"><span class="nav-icon">🏠</span> Dashboard</a>
+      <a href="cursos.html" class="nav-item" data-page="cursos"><span class="nav-icon">📚</span> Cursos</a>
+      <a href="tareas.html" class="nav-item" data-page="tareas"><span class="nav-icon">✅</span> Tareas</a>
+      <span class="nav-section-label">Cuenta</span>
+      <a href="perfil.html" class="nav-item" data-page="perfil"><span class="nav-icon">👤</span> Perfil</a>
+      <a href="configuracion.html" class="nav-item" data-page="configuracion"><span class="nav-icon">⚙️</span> Configuración</a>
+      <button class="nav-item logout" onclick="cerrarSesion()"><span class="nav-icon">🚪</span> Cerrar sesión</button>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar" id="sidebarAvatar">?</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name" id="sidebarName">—</div>
+          <div class="sidebar-user-role" id="sidebarRole">—</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">⚙️ Configuración</h1>
+        <p class="page-subtitle">Personaliza tu experiencia en la plataforma</p>
+      </div>
+    </div>
+
+    <div class="page-body">
+      <div class="card" style="max-width:600px">
+        <form id="formConfig">
+
+          <h3 style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:12px">Apariencia</h3>
+
+          <div class="switch-row">
+            <div class="switch-info">
+              <h4>Modo oscuro</h4>
+              <p>Activa el tema oscuro para mayor comodidad visual</p>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="temaOscuro"/>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <h3 style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin:24px 0 12px">Tareas</h3>
+
+          <div class="switch-row">
+            <div class="switch-info">
+              <h4>Mostrar tareas completadas</h4>
+              <p>Muestra u oculta las tareas con estado "Completada"</p>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="mostrarCompletadas"/>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <h3 style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin:24px 0 12px">Personalización</h3>
+
+          <div class="field" style="margin-bottom:8px">
+            <label>Nombre visible en el dashboard</label>
+            <input type="text" id="nombreVisible" placeholder="Dejar vacío para usar tu nombre real"/>
+          </div>
+
+          <div style="margin-top:24px">
+            <button type="submit" class="btn btn-primary" style="width:auto;margin-top:0">Guardar preferencias</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="app.js"></script>
+<script>initConfiguracion();</script>
+</body>
+</html>
